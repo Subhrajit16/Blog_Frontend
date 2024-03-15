@@ -11,7 +11,7 @@ function Login() {
     async function onSubmit(data) {
         console.log(data)
         try {
-            const resp = await axios.post('http://localhost:8080/login', data)
+            const resp = await axios.post('https://blog-backend-nine-lake.vercel.app/', data)
             console.log(resp.data)
 
             // reset()
