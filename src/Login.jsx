@@ -11,7 +11,7 @@ function Login() {
     async function onSubmit(data) {
         console.log(data)
         try {
-            const resp = await axios.post('my-social-api.vercel.app/login', data)
+            const resp = await axios.post('https://my-social-api.vercel.app/login', data)
             console.log(resp.data)
 
             // reset()
