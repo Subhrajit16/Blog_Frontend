@@ -35,6 +35,7 @@ function Login() {
                 }
             } else {
                 toast.error('Something went wrong while login')
+                
             }
 
         } catch (error) {
