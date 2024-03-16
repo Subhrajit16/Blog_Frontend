@@ -101,7 +101,7 @@ function Blog() {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            console.log(resp.data)
+            // console.log(resp.data)
             setAllBlogs(resp.data.allBlogs)
             setTotalItems(resp.data.totalBlogs)
         } catch (error) {

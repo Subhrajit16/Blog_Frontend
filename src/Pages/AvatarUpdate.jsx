@@ -10,7 +10,7 @@ function AvatarUpdate() {
     const navigate = useNavigate()
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log('submit')
+        // console.log('submit')
         const formData = new FormData()
         formData.append('avatar', file)
         if (!file) {

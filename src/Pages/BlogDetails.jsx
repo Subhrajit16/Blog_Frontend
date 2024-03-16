@@ -26,7 +26,7 @@ function BlogDetails() {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            console.log(resp.data)
+            // console.log(resp.data)
             setBlog(resp.data)
         } catch (error) {
             toast.error(error.response.data)

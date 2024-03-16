@@ -18,7 +18,7 @@ function AllUsers() {
                 }
             })
             setUsers(resp.data)
-            console.log(resp.data)
+            // console.log(resp.data)
 
         } catch (error) {
             toast.error('Error while fetching all users')
