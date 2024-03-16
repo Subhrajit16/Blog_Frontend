@@ -15,14 +15,14 @@ function Login() {
             setIsLoading(true)
             const prms = axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
             // console.log(resp.data)
+
             const resp = await toast.promise(
                 prms,
                 {
-                    pending: 'Please wait while we log you in...',
+                    pending: 'Logging in...',
                     success: 'Login successfull'
-
                 }
-            );
+            )
 
             // reset()
             if (resp.data.token) {
