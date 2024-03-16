@@ -13,14 +13,20 @@ function Login() {
         console.log(data)
         try {
             setIsLoading(true)
-            const resp = await axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
-            console.log(resp.data)
+            const prms =  axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
+            // console.log(resp.data)
+            const resp = await toast.promise(
+                prms, {
+                pending: 'Please wait while we log you in...',
+                success: 'Login successfull'
+            }
+            );
 
             // reset()
             if (resp.data.token) {
                 localStorage.setItem('token', resp.data.token)
                 localStorage.setItem('Uid', resp.data.id)
-                toast.success('Login successfull');
+                // toast.success('Login successfull');
                 if (resp.data.avatar === '') {
                     setTimeout(() => {
                         nagivate('/avatar')
@@ -35,7 +41,7 @@ function Login() {
                 }
             } else {
                 toast.error('Something went wrong while login')
-                
+
             }
 
         } catch (error) {
