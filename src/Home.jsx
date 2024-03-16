@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import Header from './Component/Header';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 function Home() {
     const token = localStorage.getItem('token');
     const UId = localStorage.getItem('Uid');
@@ -12,8 +14,11 @@ function Home() {
     const { register, handleSubmit, reset } = useForm()
     const [idForVerification, setIdForVerification] = useState('')
     const navigate = useNavigate()
+    const [isLoadingGetMyBlogs, setIsLoadingGetMyBlogs] = useState(false)
     const userId = localStorage.getItem('Uid')
+    
     async function fetchData() {
+        setIsLoadingGetMyBlogs(true)
         try {
             const resp = await axios.get('https://blog-backend-1-5cm6.onrender.com/user/' + userId, {
                 headers: {
@@ -24,6 +29,8 @@ function Home() {
             setData(resp.data)
         } catch (error) {
             toast.error(error.response.data)
+        }finally{
+            setIsLoadingGetMyBlogs(false)
         }
     }
     useEffect(() => {
@@ -31,7 +38,7 @@ function Home() {
     }, [])
 
 
-    
+
 
 
 
@@ -53,7 +60,7 @@ function Home() {
             reset()
         }
     }
-//My blogs
+    //My blogs
     const [myBlogs, setMyBlogs] = useState([])
     async function getBlogs() {
         try {
@@ -79,8 +86,15 @@ function Home() {
 
 
             <div >
-               <h4 className='text-center'>USER DETAILS</h4>
+                <h4 className='text-center'>USER DETAILS</h4>
             </div>
+
+            <Backdrop
+                sx={{ color: '#FFF', fontSize: '100px', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isLoadingGetMyBlogs}
+            >
+                <CircularProgress size={80} color="inherit" />
+            </Backdrop>
             <table className="table">
                 <thead>
                     <tr>
@@ -96,7 +110,7 @@ function Home() {
                         <td className='text-center'>{data.name}</td>
                         <td className='text-center'>{data.email}</td>
                         <td className='text-center'>
-                            <button  disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
+                            <button disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
                                 {UId === data.userId ? 'Active' : 'Inactive'}
                             </button>
                         </td>

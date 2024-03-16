@@ -8,12 +8,15 @@ import moment from 'moment'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReactPaginate from 'react-paginate';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 function Blog() {
     const [isJwtExpired, setIsJwtExpired] = useState(false)
     const { register, handleSubmit, reset, setValue } = useForm()
     const [file, setFile] = useState(null)
     const [thumbnail, setThumbnail] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingGetAllBlogs, setIsLoadingGetAllBlogs] = useState(false)
     const uploadfileRef = useRef()
     const quillRef = useRef();
     register('description');
@@ -82,7 +85,7 @@ function Blog() {
     //get all blogs
     const [allBlogs, setAllBlogs] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(4)
+    const [itemsPerPage, setItemsPerPage] = useState(8)
     const [totalItems, setTotalItems] = useState(0)
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     function handlePageClick(data) {
@@ -90,7 +93,8 @@ function Blog() {
         setCurrentPage(selectedPage);
     }
     async function getAllBlogs() {
-        console.log('getting all blogs', currentPage, itemsPerPage)
+        // console.log('getting all blogs', currentPage, itemsPerPage)
+        setIsLoadingGetAllBlogs(true)
         try {
             const resp = await axios.get(`https://blog-backend-1-5cm6.onrender.com/blog/all?page=${currentPage}&limit=${itemsPerPage}`, {
                 headers: {
@@ -102,6 +106,8 @@ function Blog() {
             setTotalItems(resp.data.totalBlogs)
         } catch (error) {
             toast.error(error.response.data)
+        } finally {
+            setIsLoadingGetAllBlogs(false)
         }
     }
 
@@ -189,6 +195,13 @@ function Blog() {
                     {isJwtExpired ? <Link to='/login'>Go to login Page</Link> : null}
                 </div>
             </div>
+
+            <Backdrop
+                sx={{ color: '#FFF', fontSize: '100px', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isLoadingGetAllBlogs}
+            >
+                <CircularProgress size={80} color="inherit" />
+            </Backdrop>
 
             <h2 className='text-center py-3'>Read All Blogs</h2>
             <div className="row row-cols-1 row-cols-md-4 g-4 p-4">

@@ -6,11 +6,13 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function Login() {
     const { register, handleSubmit } = useForm()
+    const [isLoading, setIsLoading] = React.useState(false)
     const [togglePassword, setTogglePassword] = React.useState(false)
     const nagivate = useNavigate()
     async function onSubmit(data) {
         console.log(data)
         try {
+            setIsLoading(true)
             const resp = await axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
             console.log(resp.data)
 
@@ -20,10 +22,16 @@ function Login() {
                 localStorage.setItem('Uid', resp.data.id)
                 toast.success('Login successfull');
                 if (resp.data.avatar === '') {
-                    await nagivate('/avatar')
+                    setTimeout(() => {
+                        nagivate('/avatar')
+
+                    }, 2000)
                 }
                 else {
-                    await nagivate('/blogs')
+                    setTimeout(() => {
+                        nagivate('/blogs')
+
+                    }, 2000)
                 }
             } else {
                 toast.error('Something went wrong while login')
@@ -33,6 +41,8 @@ function Login() {
 
             console.log(error.response.data)
             toast.error(error.response.data);
+        }finally{
+            setIsLoading(false)
         }
 
     }
@@ -62,7 +72,7 @@ function Login() {
                 <div className='mb-2'>
                     <Link to='/forgot_password'>Forgot your password?</Link>
                 </div>
-                <button type="submit" className="btn btn-primary w-25">Login</button>
+                <button type="submit" disabled={isLoading} className="btn btn-primary w-25">Login</button>
             </form>
             <p>New here ? create a account <Link to='/'>here</Link></p>
             <ToastContainer />

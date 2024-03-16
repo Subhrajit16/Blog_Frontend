@@ -6,8 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import Login from './Login';
 import 'react-toastify/dist/ReactToastify.css';
 function CreateUser() {
-    const [hasAccount, setHasAccount] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+
     const [togglePassword, setTogglePassword] = useState(false)
     const user_id = localStorage.getItem('id')
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -20,6 +20,7 @@ function CreateUser() {
         }
         // console.log({payload})
         try {
+            setIsSubmitted(true)
             const promise = axios.post('https://blog-backend-1-5cm6.onrender.com/signin', payload)
             const resp = await toast.promise(
                 promise, {
@@ -30,7 +31,6 @@ function CreateUser() {
             console.log(resp.data)
             if (resp.status === 201 && resp.data._id) {
                 localStorage.setItem('id', resp.data._id)
-                setIsSubmitted(true)
                 reset()
                 setTimeout(() => {
                     navigate('/login')
