@@ -15,7 +15,7 @@ function Home() {
     const userId = localStorage.getItem('Uid')
     async function fetchData() {
         try {
-            const resp = await axios.get('my-social-api.vercel.app/user/' + userId, {
+            const resp = await axios.get('https://blog-backend-1-5cm6.onrender.com/user/' + userId, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -38,7 +38,7 @@ function Home() {
     async function onSubmit(data) {
         // console.log(data)
         try {
-            const resp = await axios.post(`my-social-api.vercel.app/user/verify/${idForVerification}`, data, {
+            const resp = await axios.post(`https://blog-backend-1-5cm6.onrender.com/user/verify/${idForVerification}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -57,7 +57,7 @@ function Home() {
     const [myBlogs, setMyBlogs] = useState([])
     async function getBlogs() {
         try {
-            const resp = await axios.get(`my-social-api.vercel.app/blog/myblogs/${UId}`, {
+            const resp = await axios.get(`https://blog-backend-1-5cm6.onrender.com/blog/myblogs/${UId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -6,7 +6,7 @@ function UserProfile() {
     const { id } = useParams()
     const [user, setUser] = useState({})
     async function fetchUerData() {
-        const resp = await axios.get(`my-social-api.vercel.app/user/${id}`, {
+        const resp = await axios.get(`https://blog-backend-1-5cm6.onrender.com/user/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

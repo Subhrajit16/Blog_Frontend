@@ -46,7 +46,7 @@ function Blog() {
         const token = localStorage.getItem('token')
         try {
             setIsLoading(true)
-            const resp = axios.post('my-social-api.vercel.app/', formData, {
+            const resp = axios.post('https://blog-backend-1-5cm6.onrender.com/blog/create', formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -92,7 +92,7 @@ function Blog() {
     async function getAllBlogs() {
         console.log('getting all blogs', currentPage, itemsPerPage)
         try {
-            const resp = await axios.get(`my-social-api.vercel.app/blog/all?page=${currentPage}&limit=${itemsPerPage}`, {
+            const resp = await axios.get(`https://blog-backend-1-5cm6.onrender.com/blog/all?page=${currentPage}&limit=${itemsPerPage}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

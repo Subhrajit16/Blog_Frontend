@@ -17,7 +17,7 @@ function BlogDetails() {
     //get blog by id
     async function getBlogById() {
         try {
-            const resp = await axios.get(`my-social-api.vercel.app/blog/${id}`, {
+            const resp = await axios.get(`https://blog-backend-1-5cm6.onrender.com/blog/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -36,7 +36,7 @@ function BlogDetails() {
         // console.log({user_id})
         try {
             setIsLikeClicked(true)
-            const resp = await axios.post(`my-social-api.vercel.app/blog/likes/${id}`, { user_id }, {
+            const resp = await axios.post(`https://blog-backend-1-5cm6.onrender.com/blog/likes/${id}`, { user_id }, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -58,7 +58,7 @@ function BlogDetails() {
         // console.log(payload)
         setIsLikeClicked(true)
         try {
-            const promise = axios.post(`my-social-api.vercel.app/blog/comments/${id}`, payload, {
+            const promise = axios.post(`https://blog-backend-1-5cm6.onrender.com/blog/comments/${id}`, payload, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
