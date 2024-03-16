@@ -13,13 +13,15 @@ function Login() {
         console.log(data)
         try {
             setIsLoading(true)
-            const prms =  axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
+            const prms = axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
             // console.log(resp.data)
             const resp = await toast.promise(
-                prms, {
-                pending: 'Please wait while we log you in...',
-                success: 'Login successfull'
-            }
+                prms,
+                {
+                    pending: 'Please wait while we log you in...',
+                    success: 'Login successfull'
+
+                }
             );
 
             // reset()
@@ -48,7 +50,7 @@ function Login() {
 
             console.log(error.response.data)
             toast.error(error.response.data);
-        }finally{
+        } finally {
             setIsLoading(false)
         }
 
