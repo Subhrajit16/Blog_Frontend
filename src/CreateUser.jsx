@@ -82,8 +82,10 @@ function CreateUser() {
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Password</label>
-                        <input type={`${togglePassword ? 'text' : 'password'}`} {...register('password', {required:'password is required'})} className="form-control " id="exampleInputPassword1" />
-                        <input type="checkbox" name="" id="" onClick={togglePasswordVisibility} />Show password                        </div>
+                        <input type={`${togglePassword ? 'text' : 'password'}`} {...register('password', { required: 'password is required' })} className={errors.password ? `form-control  is-invalid` : 'form-control'} id="exampleInputPassword1" />
+                        {errors.password && <p className='invalid-feedback'>{errors.password.message}</p>}
+                        <input type="checkbox" name="" id="" onClick={togglePasswordVisibility} />Show password
+                    </div>
                     <button type="submit" disabled={isSubmitted} className="btn btn-primary">Submit</button>
                 </form>
                 <ToastContainer />
