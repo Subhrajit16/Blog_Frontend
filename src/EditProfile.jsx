@@ -99,23 +99,23 @@ function EditProfile() {
 
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="text" disabled={isSubmitted} {...register('name')} className="form-control w-25" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="text" disabled={isSubmitted} {...register('name')} className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Email</label>
-                    <input type="email" disabled={isSubmitted} {...register('email')} className="form-control w-25" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="email" disabled={isSubmitted} {...register('email')} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Education</label>
-                    <input type="text" disabled={isSubmitted} {...register('education')} className="form-control w-25" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="text" disabled={isSubmitted} {...register('education')} className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Address</label>
-                    <input type="text" disabled={isSubmitted} {...register('address')} className="form-control w-25" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="text" disabled={isSubmitted} {...register('address')} className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Bio</label>
-                    <input type="text" disabled={isSubmitted} {...register('bio')} className="form-control w-25" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="text" disabled={isSubmitted} {...register('bio')} className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
 
 

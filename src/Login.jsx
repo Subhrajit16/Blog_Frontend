@@ -24,6 +24,8 @@ function Login() {
                 }
             )
 
+            // console.log(resp.data)
+
             // reset()
             if (resp.data.token) {
                 localStorage.setItem('token', resp.data.token)

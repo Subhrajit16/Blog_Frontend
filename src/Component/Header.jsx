@@ -1,4 +1,4 @@
-import  React , {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,14 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { set } from 'react-hook-form';
 const pages = [];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
-    
+
     const id = localStorage.getItem('Uid')
     const [user, setUser] = React.useState({})
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -62,10 +62,10 @@ function ResponsiveAppBar() {
     useEffect(() => {
 
         fetchUser()
-    },[user.avatar])
+    }, [user.avatar])
 
 
-    
+
 
     return (
         <AppBar position="static">
@@ -119,11 +119,10 @@ function ResponsiveAppBar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem style={{ display: 'flex', flexDirection: 'column' }} onClick={handleCloseUserMenu}>
+                                <Link to='/blogs' style={{ textDecoration: 'none', color: 'black' }}>HOME</Link>
+                            </MenuItem>
+
                         </Menu>
                     </Box>
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -143,7 +142,7 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        BLOGBUZZ
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -155,12 +154,12 @@ function ResponsiveAppBar() {
                                 {page}
                             </Button>
                         ))}
-                        <Link to='/blogs' style={{textDecoration:'none', color:'white'}}>HOME</Link>
-                        
+                        <Link to='/blogs' style={{ textDecoration: 'none', color: 'white' }}>HOME</Link>
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        
+
                         <Tooltip title="My profile">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src={user.avatar} />

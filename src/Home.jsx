@@ -16,7 +16,7 @@ function Home() {
     const navigate = useNavigate()
     const [isLoadingGetMyBlogs, setIsLoadingGetMyBlogs] = useState(false)
     const userId = localStorage.getItem('Uid')
-    
+
     async function fetchData() {
         setIsLoadingGetMyBlogs(true)
         try {
@@ -29,7 +29,7 @@ function Home() {
             setData(resp.data)
         } catch (error) {
             toast.error(error.response.data)
-        }finally{
+        } finally {
             setIsLoadingGetMyBlogs(false)
         }
     }
@@ -95,30 +95,32 @@ function Home() {
             >
                 <CircularProgress size={80} color="inherit" />
             </Backdrop>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th className='text-center'>Name</th>
-                        <th className='text-center'>Email</th>
-                        <th className='text-center'>Status</th>
-                        <th className=''>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className='table-responsive'>
+                <table className="table ">
+                    <thead>
+                        <tr>
+                            <th className='text-center'>Name</th>
+                            <th className='text-center'>Email</th>
+                            <th className=''>Action</th>
+                            <th className='text-center'>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr className='my-2' >
-                        <td className='text-center'>{data.name}</td>
-                        <td className='text-center'>{data.email}</td>
-                        <td className='text-center'>
-                            <button disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
-                                {UId === data.userId ? 'Active' : 'Inactive'}
-                            </button>
-                        </td>
-                        {/* <button className='btn btn-sm btn-danger text-center m-1'  onClick={() => handleDelete(data._id)}>Delete</button> */}
-                        <button className='btn btn-sm btn-secondary' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setIdForVerification(data.userId)} >Edit</button>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr className='my-2' >
+                            <td className='text-center'>{data.name}</td>
+                            <td className='text-center'>{data.email}</td>
+                            <button className='btn btn-sm px-3 btn-secondary' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setIdForVerification(data.userId)} >Edit</button>
+                            <td className='text-center'>
+                                <button disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
+                                    {UId === data.userId ? 'Active' : 'Inactive'}
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
 
             <hr />
 
