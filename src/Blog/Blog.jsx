@@ -212,7 +212,7 @@ function Blog() {
 
                                 <div className="card" style={{ width: "22rem" }}>
                                     <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-                                        {blog.user_id?.avatar ? <img style={{ fontSize: '30px' }} src={blog.user_id?.avatar} alt="" /> : <i style={{ fontSize: '30px' }} class="fa-solid fa-user fa-xl"></i>}
+                                        {blog.user_id?.avatar ? <img style={{ height: '40px', aspectRatio: '1/1', borderRadius: '50%', objectFit: 'cover' }} src={blog.user_id?.avatar} alt="" /> : <i style={{ fontSize: '30px' }} class="fa-solid fa-user fa-xl"></i>}
 
                                         {/* <img style={{ height: '40px', aspectRatio: '1/1', borderRadius: '50%', objectFit: 'cover' }} src={blog.user_id?.avatar} alt="" /> */}
                                         <Link to={`/user/${blog.user_id?._id}`} className='p-3 mb-0'>{blog.user_id?.name}</Link>
