@@ -121,6 +121,7 @@ function ResponsiveAppBar() {
                         >
                             <MenuItem style={{ display: 'flex', flexDirection: 'column' }} onClick={handleCloseUserMenu}>
                                 <Link to='/blogs' style={{ textDecoration: 'none', color: 'black' }}>HOME</Link>
+                                <Link to='/allusers' style={{ textDecoration: 'none', color: 'black' }}>USERS</Link>
                             </MenuItem>
 
                         </Menu>
@@ -155,6 +156,7 @@ function ResponsiveAppBar() {
                             </Button>
                         ))}
                         <Link to='/blogs' style={{ textDecoration: 'none', color: 'white' }}>HOME</Link>
+                        <Link className='px-2' to='/allusers' style={{ textDecoration: 'none', color: 'white' }}>USERS</Link>
 
                     </Box>
 

@@ -14,6 +14,7 @@ import AvatarUpdate from './Pages/AvatarUpdate.jsx'
 import UserProfile from './Pages/UserProfile.jsx'
 import ForgotPassword from './Pages/ForgotPassword.jsx'
 import ResetPassword from './Pages/ResetPassword.jsx'
+import AllUsers from './Pages/AllUsers.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/login' element={<Login />} />
       <Route path='/forgot_password' element={<ForgotPassword />} />
       <Route path='/reset_password/:uid/:token' element={<ResetPassword />} />
+      <Route path='/allusers' element={<AllUsers />} />
     </Routes>
   </BrowserRouter>
 )
