@@ -17,8 +17,8 @@ function AllUsers() {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            setUsers(resp.data)
-            // console.log(resp.data)
+            setUsers(resp.data.allUsersData)
+            console.log(resp.data)
 
         } catch (error) {
             toast.error('Error while fetching all users')
