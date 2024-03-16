@@ -17,7 +17,7 @@ function AllUsers() {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            setUsers(resp.data.allUsersData)
+            setUsers(resp.data)
             console.log(resp.data)
 
         } catch (error) {
