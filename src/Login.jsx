@@ -83,7 +83,7 @@ function Login() {
                 <div className='mb-2'>
                     <Link to='/forgot_password'>Forgot your password?</Link>
                 </div>
-                <button type="submit" disabled={isLoading} className="btn btn-primary w-25">Login</button>
+                <button type="submit" disabled={isLoading} className="btn btn-primary ">Login</button>
             </form>
             <p>New here ? create a account <Link to='/'>here</Link></p>
             <ToastContainer />
