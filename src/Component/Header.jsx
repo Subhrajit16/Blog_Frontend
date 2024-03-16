@@ -50,7 +50,7 @@ function ResponsiveAppBar() {
 
     //Fetch user by id
     async function fetchUser() {
-        const resp = await axios.get(`http://localhost:8080/user/${id}`, {
+        const resp = await axios.get(`my-social-api.vercel.app/user/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

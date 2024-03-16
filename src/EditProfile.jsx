@@ -12,7 +12,7 @@ function EditProfile() {
     const [isSubmitted, setIsSubmitted] = useState(false)
     const { register, handleSubmit, reset } = useForm()
     async function fetchUerData() {
-        const resp = await axios.get(`http://localhost:8080/user/${id}`, {
+        const resp = await axios.get(`my-social-api.vercel.app/user/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -32,7 +32,7 @@ function EditProfile() {
         formData.append('avatar', file)
         try {
             setIsLoading(true)
-            const promise = axios.patch(`http://localhost:8080/user/avatar/${id}`, formData, {
+            const promise = axios.patch(`my-social-api.vercel.app/user/avatar/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -63,7 +63,7 @@ function EditProfile() {
 
         }
         try {
-            const resp = await axios.patch(`http://localhost:8080/user/${id}`, pyload, {
+            const resp = await axios.patch(`my-social-api.vercel.app/user/${id}`, pyload, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

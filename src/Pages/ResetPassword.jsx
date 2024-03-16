@@ -10,7 +10,7 @@ function ResetPassword() {
     async function onsubmit(data) {
         console.log(data)
         try {
-            const promise = axios.post(`http://localhost:8080/forgot_password/reset/${uid}/${token}`, data)
+            const promise = axios.post(`my-social-api.vercel.app/forgot_password/reset/${uid}/${token}`, data)
             const resp = await toast.promise(promise, {
                 pending: 'Please wait while we reset your password...',
                 success: 'Password reset successfully',

@@ -20,7 +20,7 @@ function CreateUser() {
         }
         // console.log({payload})
         try {
-            const promise = axios.post('https://blog-backend-nine-lake.vercel.app/', payload)
+            const promise = axios.post('my-social-api.vercel.app/', payload)
             const resp = await toast.promise(
                 promise, {
                 pending: 'Creating User...',

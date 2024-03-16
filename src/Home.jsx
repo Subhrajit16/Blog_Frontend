@@ -15,7 +15,7 @@ function Home() {
     const userId = localStorage.getItem('Uid')
     async function fetchData() {
         try {
-            const resp = await axios.get('http://localhost:8080/user/' + userId, {
+            const resp = await axios.get('my-social-api.vercel.app/user/' + userId, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -31,28 +31,14 @@ function Home() {
     }, [])
 
 
-    async function toggleStatus(id) {
-        const user = data.find(item => item._id === id)
-        try {
-            const resp = await axios.patch(`http://localhost:8080/user/${id}`, { isActive: !user.isActive }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            console.log(resp.data)
-            toast.success('Status updated')
-            fetchData()
-        } catch (error) {
-            toast.error('Something went wrong while updating status')
-        }
-    }
+    
 
 
 
     async function onSubmit(data) {
         // console.log(data)
         try {
-            const resp = await axios.post(`http://localhost:8080/user/verify/${idForVerification}`, data, {
+            const resp = await axios.post(`my-social-api.vercel.app/user/verify/${idForVerification}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -71,7 +57,7 @@ function Home() {
     const [myBlogs, setMyBlogs] = useState([])
     async function getBlogs() {
         try {
-            const resp = await axios.get(`http://localhost:8080/blog/myblogs/${UId}`, {
+            const resp = await axios.get(`my-social-api.vercel.app/blog/myblogs/${UId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -110,7 +96,7 @@ function Home() {
                         <td className='text-center'>{data.name}</td>
                         <td className='text-center'>{data.email}</td>
                         <td className='text-center'>
-                            <button onClick={() => toggleStatus(data._id)} disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
+                            <button  disabled={true} className={`btn btn-sm ${UId === data.userId ? 'btn-success' : 'btn-danger'}`}>
                                 {UId === data.userId ? 'Active' : 'Inactive'}
                             </button>
                         </td>

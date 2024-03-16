@@ -12,7 +12,7 @@ function ForgotPassword() {
         setIsLoading(true)
         if (email) {
             try {
-                const prms = axios.post('http://localhost:8080/forgot_password', { email })
+                const prms = axios.post('my-social-api.vercel.app/forgot_password', { email })
                 const resp = await toast.promise(prms, {
                     pending: 'Please wait while we send you a link to reset your password...',
                     success: 'Password reset link sent to your email',

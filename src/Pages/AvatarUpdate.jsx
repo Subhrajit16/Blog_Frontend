@@ -18,7 +18,7 @@ function AvatarUpdate() {
         }
         try {
             setIsLoading(true)
-            const promise = axios.patch(`http://localhost:8080/user/avatar/${id}`, formData, {
+            const promise = axios.patch(`my-social-api.vercel.app/user/avatar/${id}`, formData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
