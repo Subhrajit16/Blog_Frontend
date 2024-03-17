@@ -142,7 +142,7 @@ function Home() {
                                     </div>
                                     <div className=" card-body d-flex justify-content-around">
                                         <Link to={`/blog/${blog._id}`} className="card-link">Read Full Article</Link>
-                                        <button className='btn btn-sm btn-outline-primary'>edit </button>
+                                        
                                     </div>
                                 </div>
                             </div>
