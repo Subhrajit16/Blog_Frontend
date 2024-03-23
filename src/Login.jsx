@@ -10,6 +10,7 @@ function Login() {
     const [isLoading, setIsLoading] = React.useState(false)
     const [togglePassword, setTogglePassword] = React.useState(false)
     const nagivate = useNavigate()
+    console.log('api url',API_BASE_URL)
     async function onSubmit(data) {
         console.log(data)
         try {
