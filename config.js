@@ -1,3 +1,1 @@
-import 'dotenv/config'
-
-export const API_BASE_URL = `${process.env.PRODUCTION_URL}`;
+export const API_BASE_URL = import.meta.env.VITE_APP_PRODUCTION_URL;
