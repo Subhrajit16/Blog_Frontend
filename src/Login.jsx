@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import {API_BASE_URL} from '../config'
 
 function Login() {
     const { register, handleSubmit } = useForm()
@@ -13,7 +14,7 @@ function Login() {
         console.log(data)
         try {
             setIsLoading(true)
-            const prms = axios.post('https://blog-backend-1-5cm6.onrender.com/login', data)
+            const prms = axios.post(`${API_BASE_URL}/login`, data)
             // console.log(resp.data)
 
             const resp = await toast.promise(
